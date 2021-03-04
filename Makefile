@@ -3,7 +3,7 @@
 # sudo apt install pkg-config cython3 libpython3-dev zlib1g-dev libzstd-dev \
 #     libxml2-dev libsdl2-dev libsdl2-image-dev
 
-PACKAGES= python3-embed zlib libzstd libxml-2.0 sdl2 SDL2_image
+PACKAGES= python3-embed zlib libzstd libxml-2.0 sdl2 SDL2_image sfml-all
 
 CC= gcc
 CXX= g++
@@ -65,7 +65,9 @@ INCS= \
 
 CYINCS= \
 	-Isrc/sdl2_cython \
-	-Isrc/tmxlite_cython
+	-Isrc/tmxlite_cython \
+	-Isrc/sfml_cython \
+	-Isrc/sfml_cython/src
 
 LIBS=
 
@@ -78,6 +80,19 @@ C_SRCS= \
 	src/tmxlite/detail/miniz.c
 
 CPP_SRCS= \
+	src/sfml_cython/src/system/system.cpp \
+	src/sfml_cython/src/system/hacks.cpp \
+	src/sfml_cython/src/system/error.cpp \
+	src/sfml_cython/src/system/NumericObject.cpp \
+	src/sfml_cython/src/window/window.cpp \
+	src/sfml_cython/src/window/DerivableWindow.cpp \
+	src/sfml_cython/src/graphics/graphics.cpp \
+	src/sfml_cython/src/graphics/DerivableRenderWindow.cpp \
+	src/sfml_cython/src/graphics/DerivableDrawable.cpp \
+	src/sfml_cython/src/audio/audio.cpp \
+	src/sfml_cython/src/audio/DerivableSoundStream.cpp \
+	src/sfml_cython/src/audio/DerivableSoundRecorder.cpp \
+	src/sfml_cython/src/network/network.cpp \
 	src/tmxlite/FreeFuncs.cpp \
 	src/tmxlite/LayerGroup.cpp \
 	src/tmxlite/ObjectGroup.cpp \
